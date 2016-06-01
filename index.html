@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+
+	<script type="text/javascript" src="controller.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body ng-controller="myController">
+
+	<div id="buttons" class="row col-sm-12">
+		<button ng-click="nowPlaying()">Now Playing</button>
+		<button ng-click="topRated()">Top Rated Movies</button>
+		<button ng-click="upcoming()">Upcoming Movies</button>
+		<button ng-click="popular()">Popular Movies</button>
+		
+	</div>
+	<div>
+		<form ng-submit="search()">
+			<input type="text" ng-model="searchType">
+			<input type='submit'>
+			<select ng-model="selectedItem">
+				<option ng-value="'movie'">Movie</option>
+				<option ng-value="'tv'">TV Show</option>
+				<option ng-value="'person'">Person</option>
+				<option ng-value="'multi'">All</option>
+			</select>
+		</form>
+	</div>
+<div class="container">
+	<div id="titles" class="col-sm-3 text-center" ng-repeat="item in data">
+		<h6>{{item.name}}</h6>
+		<img src="http://image.tmdb.org/t/p/w300{{item.path}}">
+	</div>
+</div>
+
+</body>
+</html>
+
